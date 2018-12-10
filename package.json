@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^16.6.3",
+    "react-day-picker": "^7.2.4",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1"
+    "react-scripts": "2.1.1",
+    "react-select": "^2.1.2"
   },
   "devDependencies": {
     "husky": "^1.2.0",
@@ -14,7 +16,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "npm run prettier",
+      "yarn run prettier",
       "git add"
     ]
   },
@@ -27,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"src/**/*.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
