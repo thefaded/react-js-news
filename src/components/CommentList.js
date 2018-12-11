@@ -1,8 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Comment from './Comment'
 import toggleOpen from '../decorators/ToggleOpen'
 
-class CommentList extends React.Component {
+export class CommentList extends React.Component {
+  static propTypes = {
+    comments: PropTypes.array,
+    isOpen: PropTypes.bool,
+    toggleOpen: PropTypes.func
+  }
+
   static defaultProps = {
     comments: []
   }
@@ -13,7 +20,9 @@ class CommentList extends React.Component {
 
     return (
       <div>
-        <button onClick={toggleOpen}>{buttonLabel}</button>
+        <button onClick={toggleOpen} className="test__comments-list--btn">
+          {buttonLabel}
+        </button>
         {this.getBody()}
       </div>
     )
@@ -21,13 +30,14 @@ class CommentList extends React.Component {
 
   getBody() {
     const { comments, isOpen } = this.props
+
     if (!isOpen) return null
 
     const body =
       comments && comments.length ? (
         <ul>
           {comments.map((comment) => (
-            <li key={comment.id}>
+            <li key={comment.id} className="test__comments-list--item">
               <Comment comment={comment} />
             </li>
           ))}
@@ -38,6 +48,13 @@ class CommentList extends React.Component {
 
     return <div>{body}</div>
   }
+
+  componentDidMount() {
+    const { fetchData } = this.props
+    fetchData && fetchData()
+  }
 }
 
-export default toggleOpen(CommentList)
+const CommentListWithToggle = toggleOpen(CommentList)
+
+export default CommentListWithToggle

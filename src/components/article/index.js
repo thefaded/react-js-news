@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import CommentList from './CommentList'
+import CSSTransition from 'react-addons-css-transition-group'
+import CommentListWithToggle from '../CommentList'
+import './style.css'
 
 class Article extends PureComponent {
   static propTypes = {
@@ -21,7 +23,15 @@ class Article extends PureComponent {
         <button onClick={this.handleBtnClick} className="test__article--btn">
           {isOpen ? 'Close' : 'Open'}
         </button>
-        {this.body}
+        <CSSTransition
+          transitionName="article"
+          transitionAppear
+          transitionEnterTimeout={500}
+          transitionAppearTimeout={1000}
+          transitionLeaveTimeout={300}
+        >
+          {this.body}
+        </CSSTransition>
       </div>
     )
   }
@@ -33,7 +43,7 @@ class Article extends PureComponent {
     return (
       <section className="test__article--body">
         {article.text}
-        <CommentList isOpen={isOpen} comments={article.comments} />
+        <CommentListWithToggle isOpen={isOpen} comments={article.comments} />
       </section>
     )
   }

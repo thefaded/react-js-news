@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ArticleList from './components/ArticleList'
+import ArticleListWithAccordion from './components/ArticleList'
 import UserForm from './components/UserForm'
 import Filters from './components/filters'
 import articles from './fixtures'
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <UserForm />
         <Filters articles={articles} />
-        <ArticleList articles={articles} />
+        <ArticleListWithAccordion articles={articles} />
       </div>
     )
   }

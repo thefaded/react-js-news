@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Comment extends React.Component {
   render() {
@@ -11,6 +12,13 @@ class Comment extends React.Component {
       </div>
     )
   }
+}
+
+Comment.propTypes = {
+  comment: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    user: PropTypes.string.isRequired
+  }).isRequired
 }
 
 export default Comment
