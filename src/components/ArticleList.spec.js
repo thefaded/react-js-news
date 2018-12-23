@@ -28,26 +28,6 @@ describe('ArticleList', () => {
     expect(container.find('.test__article--body').length).toEqual(1)
   })
 
-  // it('should close an article', (done) => {
-  //   const container = mount(<ArticleListWithAccordion articles={articles} />)
-  //   expect(container.find('.test__article--body').length).toEqual(0)
-
-  //   container.find('.test__article--btn').at(0).simulate('click')
-  //   expect(container.find('.test__article--body').length).toEqual(1)
-
-  //   container.find('.test__article--btn').at(0).simulate('click')
-  //   setTimeout(() => {
-  //     try {
-  //       container.simulate('transitionEnd')
-
-  //       expect(container.find('.test__article--body').length).toEqual(0)
-  //       done()
-  //     } catch (err) {
-  //       done.fail(err)
-  //     }
-  //   }, 800)
-  // })
-
   it('should trigger data fetching on mount', (done) => {
     mount(
       <ArticleListWithAccordion
